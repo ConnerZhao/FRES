@@ -10,6 +10,7 @@ from keras.preprocessing.image import load_img, img_to_array
 from keras.models import  load_model
 import matplotlib.pyplot as plt
 import numpy as np
+import random
 
 #window
 tkWindow = Tk()  
@@ -48,10 +49,6 @@ def scanButton():
             emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
             predicted_emotion = emotions[max_index]
             f.write(emotions[max_index] + "\n")
-            # manipulate this code here, modify to our need
-            # have it output in variables, do if emotion == "one of the options"
-
-
             cv2.putText(test_img, predicted_emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
         resized_img = cv2.resize(test_img, (1000, 700))
@@ -63,6 +60,24 @@ def scanButton():
     cap.release()
     cv2.destroyAllWindows
 
+def read():
+    # Random number for random quotes
+    x = random.randint(1,4)
+    # Opens file containing emotion from scanning
+    y = open("emotions.txt", "rt")
+    # Reads the first 11 characters
+    z = y.read(10)
+    # Strips the first 11 characters, so its only text
+    emotion = z.strip()
+    print(z)
+    if emotion == "angry":
+        quote = open("angry.txt", "rt")
+        messagebox.showinfo( title = '', message= quote.readlines(x))
+    else if emotion == disgust
+    else:
+        messagebox.showinfo( title = '', message= 'You have not scanned your facial expression yet!')
+    
+
 quitButton = tkinter.Button(tkWindow, 
                    text="Quit", 
                    fg="red",
@@ -70,8 +85,9 @@ quitButton = tkinter.Button(tkWindow,
 
 #login button
 scan = Button(tkWindow, text="Scan", command = scanButton)
+msgButton = Button(tkWindow, text="Mesage", command = read)
 scan.pack()
-
+msgButton.pack()
 quitButton.pack()
 
 tkWindow.mainloop()
