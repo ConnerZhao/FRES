@@ -1,5 +1,6 @@
-
+import tkinter 
 from tkinter import *
+from tkinter import messagebox
 import cv2
 import numpy as np
 from keras.preprocessing import image
@@ -9,7 +10,6 @@ from keras.preprocessing.image import load_img, img_to_array
 from keras.models import  load_model
 import matplotlib.pyplot as plt
 import numpy as np
-import tkinter
 
 #window
 tkWindow = Tk()  
@@ -18,16 +18,11 @@ tkWindow.title('Tkinter Login Form - pythonexamples.org')
 
 # load model
 model = load_model("best_model.h5")
-
 face_haar_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-
 cap = cv2.VideoCapture(0)
 
-
-
-f = open("emotions.txt", "r")
-
 def scanButton():
+    messagebox.showinfo( title = "Look at the Camera", message= "Look at the Camera\nOnce the facial expression is labeled, press Q to stop scanning!")
     while True:
         f = open("emotions.txt", "w")
         ret, test_img = cap.read()  # captures frame and returns boolean value and captured image
@@ -64,10 +59,9 @@ def scanButton():
         if cv2.waitKey(10) == ord('q'):  # wait until 'q' key is pressed
             f.close()
             break
-
+    messagebox.showinfo( title = '', message= "Scanning Completed")
     cap.release()
     cv2.destroyAllWindows
-
 
 quitButton = tkinter.Button(tkWindow, 
                    text="Quit", 
@@ -77,6 +71,7 @@ quitButton = tkinter.Button(tkWindow,
 #login button
 scan = Button(tkWindow, text="Scan", command = scanButton)
 scan.pack()
+
 quitButton.pack()
-f.close()
+
 tkWindow.mainloop()
