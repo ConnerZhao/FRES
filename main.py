@@ -73,36 +73,40 @@ def read():
     if emotion == "angry":
         quote = open("angry.txt", "rt")
         messagebox.showinfo( title = '', message= quote.readlines(x))
+        quote.close()
     elif emotion == "disgust":
         quote = open("disgust.txt", "rt")
         messagebox.showinfo( title = '', message= quote.readlines(x))
+        quote.close()
     elif emotion == "fear":
         quote = open("fear.txt", "rt")
         messagebox.showinfo( title = '', message= quote.readlines(x))
+        quote.close()
     elif emotion == "happy":
+        messagebox.showinfo( title = '', message= "We're glad you are having a great day!\nKeep it up!")
         quote = open("happy.txt", "rt")
         messagebox.showinfo( title = '', message= quote.readlines(x))
+        quote.close()
     elif emotion == "surprise":
         quote = open("surprise.txt", "rt")
         messagebox.showinfo( title = '', message= quote.readlines(x))
+        quote.close()
     elif emotion == "sad":
         quote = open("sad.txt", "rt")
         messagebox.showinfo( title = '', message= quote.readlines(x))
+        quote.close()
     else:
         messagebox.showinfo( title = '', message= 'You have not scanned your facial expression yet!')
-    quote.close()
-    
-
+# Exit Button
 quitButton = tkinter.Button(tkWindow, 
                    text="Quit", 
                    fg="red",
                    command=quit)
 
-#login button
-scan = Button(tkWindow, text="Scan", command = scanButton)
+# init Buttons
+scan = Button(tkWindow, text="Scan", fg="Green", command = scanButton)
 msgButton = Button(tkWindow, text="Mesage", command = read)
 scan.pack()
 msgButton.pack()
 quitButton.pack()
-
 tkWindow.mainloop()
