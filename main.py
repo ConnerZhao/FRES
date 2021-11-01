@@ -73,7 +73,18 @@ def read():
     if emotion == "angry":
         quote = open("angry.txt", "rt")
         messagebox.showinfo( title = '', message= quote.readlines(x))
-    else if emotion == disgust
+    elif emotion == "disgust":
+        quote = open("disgust.txt", "rt")
+        messagebox.showinfo( title = '', message= quote.readlines(x))
+    elif emotion == "fear":
+        quote = open("fear.txt", "rt")
+        messagebox.showinfo( title = '', message= quote.readlines(x))
+    elif emotion == "happy":
+        quote = open("happy.txt", "rt")
+        messagebox.showinfo( title = '', message= quote.readlines(x))
+    elif emotion == "surprise":
+        quote = open("surprise.txt", "rt")
+        messagebox.showinfo( title = '', message= quote.readlines(x))
     else:
         messagebox.showinfo( title = '', message= 'You have not scanned your facial expression yet!')
     
