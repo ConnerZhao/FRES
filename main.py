@@ -85,8 +85,12 @@ def read():
     elif emotion == "surprise":
         quote = open("surprise.txt", "rt")
         messagebox.showinfo( title = '', message= quote.readlines(x))
+    elif emotion == "sad":
+        quote = open("sad.txt", "rt")
+        messagebox.showinfo( title = '', message= quote.readlines(x))
     else:
         messagebox.showinfo( title = '', message= 'You have not scanned your facial expression yet!')
+    quote.close()
     
 
 quitButton = tkinter.Button(tkWindow, 
